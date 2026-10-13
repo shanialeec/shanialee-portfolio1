@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
 
 body {
   margin: 0;
-  background: #FFFFFF;
+  background: #fff;
 }
 
 .portfolio-cloud {
@@ -39,7 +40,6 @@ body {
   transition: transform 180ms ease;
 }
 
-/* Irregular spacing, typefaces and angles */
 .project:nth-child(3n) { font-family: 'Roboto Mono', monospace; }
 .project:nth-child(4n) { margin-left: -3px; margin-right: 3px; }
 .project:nth-child(5n) { transform: rotate(-1deg); }
@@ -84,72 +84,31 @@ body {
 .project:nth-child(6n) .event { font-weight: 400; }
 .project:nth-child(8n) .event { font-weight: 700; }
 
-/* Details are stored on each project but displayed in a separate panel below */
 .details { display: none; }
 
-.portfolio-wrapper {
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
-  align-items: start;
-  gap: 22px;
-  font-family: 'Roboto Mono', monospace;
-}
-
-.portfolio-cloud {
-  grid-column: 1;
-  min-width: 0;
-}
-
-
-.project-panel {
+#project-tooltip {
+  position: fixed;
+  z-index: 2147483647;
   display: none;
-  grid-column: 2;
-  grid-row: 1;
-  position: sticky;
-  top: 16px;
-  width: 100%;
-  min-width: 0;
-  margin: 28px 0 0;
-  padding: 16px 18px;
+  width: max-content;
+  max-width: min(330px, calc(100vw - 32px));
+  max-height: 45vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 13px 15px;
   background: #181818;
   color: #f8f6f2;
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 2px;
-  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
   font-family: 'Roboto Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.65;
   letter-spacing: 0;
   white-space: normal;
   overflow-wrap: anywhere;
-}
-
-.project-panel.visible { display: block; }
-.project-panel .panel-title {
-  display: block;
-  margin-bottom: 8px;
-  color: #f8f6f2;
-  font-family: 'Oswald', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-@media (max-width: 760px) {
-  .portfolio-wrapper {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-  }
-
-  .project-panel {
-    grid-column: 1;
-    grid-row: 2;
-    position: static;
-    width: calc(100% - 20px);
-    margin: 0 10px 24px;
-  }
+  pointer-events: none;
 }
 
 @media (max-width: 600px) {
@@ -157,417 +116,432 @@ body {
     gap: 5px 7px;
     padding: 22px 10px 30px;
   }
-
   .large { font-size: clamp(23px, 7vw, 35px); }
   .medium { font-size: clamp(16px, 4.5vw, 23px); }
   .small { font-size: clamp(12px, 3.5vw, 17px); }
-
-  .details {
-    position: fixed;
-    top: auto;
-    bottom: 16px;
-    left: 50% !important;
-    width: min(340px, 88vw);
-    max-width: 88vw;
-    max-height: 45vh;
-    overflow-y: auto;
-    transform: translate(-50%, 5px);
-  }
-
-  .project:hover .details,
-  .project:focus .details,
-  .project.active .details {
-    transform: translate(-50%, 0);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project, .event, .details { transition: none; }
+  .project, .event { transition: none; }
 }
 </style>
 </head>
 <body>
 
-<div class="portfolio-wrapper">
 <div class="portfolio-cloud">
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">CCP Outreach Tours</span>
     <div class="details">Cultural Center of the Philippines<br>Head Stage Manager; Scriptwriter; Sounds and Video Boardman<br>2021–2025</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">54th ASEAN Banking Council Meeting</span>
     <div class="details">ASEAN<br>Production Manager<br>November 2026</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">Localized Peace Engagement and its Transformation Program (Shoot)</span>
     <div class="details">OPAPRU<br>Producer<br>October 2026</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">Watsons Philippines</span>
     <div class="details">Production Manager, Program Lead, Writer<br>2025–2026<br>Events Handled:<br><br>Watsons Health Strategy 2026<br>Watsons Dermskin 2026<br>Watsons Mid-Year General Assembly<br>Watsons Health &amp; Beauty Convention<br>Untangled: Watsons Hair Animation<br>GEMS of Excellence Service Awards<br>Health, Wellness, and Beauty Awards<br>Watsons Baby Segment<br>Watsons PA Summit 2026 (Cebu and Manila)<br>MAKE 2026<br>Great Health Fest 2026<br>Watsons Year-End Party 2025<br>SM Beauty Late Night Sale<br>Store of the Year Awards 2025<br>SM Beauty LOOK At Me 5th Anniversary<br>DermSkin 2025<br>BeautyCon 2025</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">RCMW 57th Induction Ceremony</span>
     <div class="details">Rotary Club of Makati West<br>Producer and Director<br>July 2026</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">DENR Shoot</span>
     <div class="details">DENR<br>Director<br>June 2026</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Commission on Population Development Shoot</span>
     <div class="details">Commission on Population Development<br>Director<br>June 2026</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Together We Flavor</span>
     <div class="details">McCormick<br>Stage Manager<br>April 2026</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Chowking Summer Live Showdown</span>
     <div class="details">Chowking<br>Production Manager<br>March–April 2026</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">Lead Like the Babaylans Filipinas</span>
     <div class="details">Philippine Commission on Women<br>Accounts Executive and Producer<br>March 2026</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">Asia Butoh Gathering</span>
     <div class="details">Kapwa Movement and Japan Foundation Manila<br>Production and Stage Manager<br>February 2026</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">SK Island-Wide Convention 2025</span>
     <div class="details">National Youth Commission<br>Production Manager<br>November 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">YC2 Creative Festival</span>
     <div class="details">Department of Trade and Industry<br>Production Manager<br>November 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">APRSAF-31</span>
     <div class="details">Philippine Space Agency<br>Production Manager<br>November 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">2nd ASEAN HTA Harmonization</span>
     <div class="details">Department of Science and Technology<br>Production Manager<br>November 2025</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">CSO Awards (Shoot)</span>
     <div class="details">OPAPRU<br>Production Manager<br>October 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Philippine Tourism Awards</span>
     <div class="details">Department of Tourism<br>Head Stage Manager<br>September 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Filipino Brand of Service Excellence (FBSE) Summit and Awarding</span>
     <div class="details">Department of Tourism<br>Head Stage Manager<br>July 2025</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Rotary Club of Makati West 56th Induction Ceremony</span>
     <div class="details">Rotary Club of Makati West<br>Director<br>July 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">SALAAM 2025: Halal Tourism and Trade Expo Philippines</span>
     <div class="details">Department of Tourism<br>Head Stage Manager<br>June 2025</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">World Expo 2025 Osaka</span>
     <div class="details">Cultural Center of the Philippines<br>Assistant Production Manager<br>June 2025</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">We Aren’t Kids Anymore</span>
     <div class="details">Barefoot Theatre Collaborative<br>Assistant Stage Manager<br>May 2025</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Philippine Experience Program – Batanes</span>
     <div class="details">Department of Tourism<br>Head Stage Manager<br>March 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Manila Forum on Competition in Developing Countries</span>
     <div class="details">Tourism Promotions Board<br>Stage Manager<br>February 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">TRES Awards Night</span>
     <div class="details">Department of Tourism<br>Head Stage Manager<br>February 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Wings of Hope</span>
     <div class="details">Philippine Philharmonic Orchestra<br>Head Stage Manager; Video Operator<br>February 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Manila Forum</span>
     <div class="details">Philippine Competition Commission<br>Head Stage Manager<br>February 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">SAMO’T-SARING BIDA: Ang Bodabil ng Pag-asa</span>
     <div class="details">National Commission for Culture and the Arts<br>Administrative Assistant<br>December 2024</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Music, Movies, Magic</span>
     <div class="details">Cultural Center of the Philippines<br>Administrative Assistant<br>November 2024</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">CESCON 2024</span>
     <div class="details">Civil Service Commission<br>Head Stage Manager<br>November 2024</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Progetto Puccini</span>
     <div class="details">Cultural Center of the Philippines<br>Stage Manager<br>October 2024</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Regional Travel Fair 2024</span>
     <div class="details">Tourism Promotions Board<br>Production Manager<br>September 2024</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">PHITEX 2024</span>
     <div class="details">Tourism Promotions Board<br>Production Manager<br>September 2024</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">FIVB Men’s Volleyball Drawing of Lots</span>
     <div class="details">Silang Communications<br>Assistant Production Manager<br>September 2024</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">MICECON 2024</span>
     <div class="details">Tourism Promotions Board<br>Production Manager<br>July 2024</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Prinsipe Bahaghari</span>
     <div class="details">Teatrong Mulat ng Pilipinas<br>Head Stage Manager<br>January 2024; November 2023</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Komedya at Sarswela</span>
     <div class="details">National Commission for Culture and the Arts<br>Administrative Officer<br>November 2023</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">ACC Asia 2023</span>
     <div class="details">American College of Cardiology<br>Head Stage Manager<br>September 2023</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">AFI Global Policy Forum</span>
     <div class="details">Bangko Sentral ng Pilipinas<br>Head Stage Manager<br>September 2023</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">Red</span>
     <div class="details">The Necessary Theatre<br>Head Stage Manager; Sounds Boardman<br>June; September 2023</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Kislap (Class of 2020 Graduation Ceremony)</span>
     <div class="details">UP College of Arts and Letters<br>Head Stage Manager<br>July 2023</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Papet Pasyon</span>
     <div class="details">Teatrong Mulat ng Pilipinas<br>Head Stage Manager<br>April 2023; 2025</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Shooting Star Asia Tour in Manila</span>
     <div class="details">Rise Media<br>Ticketing Manager<br>November 2022</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Himig Himbing</span>
     <div class="details">Cultural Center of the Philippines<br>Scriptwriter<br>November 2022</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">CCP 53rd Anniversary</span>
     <div class="details">Cultural Center of the Philippines<br>Event Stage Manager<br>September 2022</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Sama-Sama sa ASEAN</span>
     <div class="details">Cultural Center of the Philippines<br>Performer<br>August 2022</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Student’s Handbook</span>
     <div class="details">Cultural Center of the Philippines / Virgin Labfest<br>Head Stage Manager; Sounds Boardman<br>June 2022</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Inauguration of Manila Metropolitan Theater</span>
     <div class="details">National Commission for Culture and the Arts<br>Assistant Production Manager<br>December 2021</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Papaano Turuan ang Babae Humawak ng Baril</span>
     <div class="details">Cultural Center of the Philippines / Virgin Labfest (Virtual)<br>Stage Manager<br>June 2020</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Mayang Bubot sa Tag-Araw</span>
     <div class="details">Cultural Center of the Philippines / Virgin Labfest (Virtual)<br>Stage Manager<br>June 2020</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Summer Solstice</span>
     <div class="details">UP Dulaang Laboratoryo<br>Head Stage Manager<br>March 2020</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">FQS at 50: Konsyertong Bayan sa Ika-50 Taon</span>
     <div class="details">University of the Philippines<br>Assistant Stage Manager<br>February 2020</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Pag-ibig sa Gumuhong Palasyo</span>
     <div class="details">UP College of Music Recitals<br>Head Stage Manager<br>December 2019</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">The Yellow Shawl</span>
     <div class="details">UP Dance Company<br>Head Stage Manager<br>December 2019</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">A(Flame)</span>
     <div class="details">UP Dulaang Laboratoryo<br>Head Stage Manager<br>November 2019</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">Happy Days</span>
     <div class="details">UP Dulaang Laboratoryo<br>Head Stage Manager; Production Manager<br>November 2019</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">The Dressing Room</span>
     <div class="details">Dulaang UP<br>Publicity Representative<br>November 2018</div>
   </div>
 
-  <div class="project large" tabindex="0" role="button" aria-expanded="false">
+  <div class="project large" tabindex="0" role="button">
     <span class="event">Ang Dalagita’y ’Sang Bagay na ’Di-Buo</span>
     <div class="details">Dulaang UP<br>Head Stage Manager<br>October 2018</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Six Characters in Search of an Author</span>
     <div class="details">Dulaang UP<br>Actor; Assistant Stage Manager<br>September 2018</div>
   </div>
 
-  <div class="project medium" tabindex="0" role="button" aria-expanded="false">
+  <div class="project medium" tabindex="0" role="button">
     <span class="event">Aurelio Tolentino’s Sesquicentennial Celebration</span>
     <div class="details">UP Office for Initiatives in Culture and the Arts<br>Head Stage Manager; Production Manager<br>November 2017</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Distrito de Molo</span>
     <div class="details">Dulaang UP<br>Marketing Representative<br>October 2016</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">The Dressing Room</span>
     <div class="details">Dulaang UP<br>Property Staff<br>April 2016</div>
   </div>
 
-  <div class="project small" tabindex="0" role="button" aria-expanded="false">
+  <div class="project small" tabindex="0" role="button">
     <span class="event">Mx. CAL</span>
     <div class="details">UP College of Arts and Letters<br>Head Stage Manager<br>April 2018</div>
   </div>
 
 </div>
-<div class="project-panel" id="project-panel" aria-live="polite"></div>
-</div>
 
 <script>
 (function () {
-  const wrapper = document.querySelector('.portfolio-wrapper');
   const projects = document.querySelectorAll('.portfolio-cloud .project');
-  const panel = document.getElementById('project-panel');
-  let hideTimer = null;
+  const tooltip = document.createElement('div');
 
-  function showDetails(project) {
-    if (!project) return;
-    const title = project.querySelector('.event');
+  tooltip.id = 'project-tooltip';
+  tooltip.setAttribute('role', 'tooltip');
+  document.body.appendChild(tooltip);
+
+  let activeProject = null;
+
+  function showTooltip(project) {
     const details = project.querySelector('.details');
-    if (!title || !details) return;
+    if (!details) return;
 
-    window.clearTimeout(hideTimer);
-    panel.innerHTML = '<span class="panel-title"></span>' + details.innerHTML;
-    panel.querySelector('.panel-title').textContent = title.textContent.trim();
-    panel.classList.add('visible');
-    projects.forEach(function (item) {
-      item.classList.toggle('active', item === project);
-      item.setAttribute('aria-expanded', item === project ? 'true' : 'false');
-    });
+    activeProject = project;
+    tooltip.innerHTML = details.innerHTML;
+    tooltip.style.display = 'block';
+    positionTooltip(project);
   }
 
-  function scheduleHide() {
-    window.clearTimeout(hideTimer);
-    hideTimer = window.setTimeout(function () {
-      panel.classList.remove('visible');
-      panel.innerHTML = '';
-      projects.forEach(function (item) {
-        item.classList.remove('active');
-        item.setAttribute('aria-expanded', 'false');
-      });
-    }, 180);
+  function positionTooltip(project) {
+    if (!project || tooltip.style.display === 'none') return;
+
+    const rect = project.getBoundingClientRect();
+    const margin = 12;
+    const gap = 14;
+    const viewportWidth = document.documentElement.clientWidth;
+    const viewportHeight = document.documentElement.clientHeight;
+
+    tooltip.style.left = margin + 'px';
+    tooltip.style.top = margin + 'px';
+
+    const tipWidth = tooltip.offsetWidth;
+    const tipHeight = tooltip.offsetHeight;
+
+    let left = rect.right + gap;
+
+    if (left + tipWidth > viewportWidth - margin) {
+      left = rect.left - tipWidth - gap;
+    }
+
+    if (left < margin) {
+      left = Math.max(margin, Math.min(
+        rect.left + rect.width / 2 - tipWidth / 2,
+        viewportWidth - tipWidth - margin
+      ));
+    }
+
+    let top = rect.top;
+
+    if (top + tipHeight > viewportHeight - margin) {
+      top = viewportHeight - tipHeight - margin;
+    }
+
+    if (top < margin) top = margin;
+
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+  }
+
+  function hideTooltip(project) {
+    if (project && activeProject !== project) return;
+    tooltip.style.display = 'none';
+    activeProject = null;
   }
 
   projects.forEach(function (project) {
     project.addEventListener('mouseenter', function () {
-      showDetails(project);
+      showTooltip(project);
     });
+
+    project.addEventListener('mouseleave', function () {
+      hideTooltip(project);
+    });
+
     project.addEventListener('focus', function () {
-      showDetails(project);
+      showTooltip(project);
     });
-    project.addEventListener('click', function (event) {
-      event.preventDefault();
-      showDetails(project);
+
+    project.addEventListener('blur', function () {
+      hideTooltip(project);
     });
+
     project.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        showDetails(project);
-      }
-      if (event.key === 'Escape') scheduleHide();
+      if (event.key === 'Escape') hideTooltip(project);
     });
   });
 
-  wrapper.addEventListener('mouseleave', scheduleHide);
-  wrapper.addEventListener('mouseenter', function () {
-    window.clearTimeout(hideTimer);
+  window.addEventListener('scroll', function () {
+    if (activeProject) positionTooltip(activeProject);
+  }, true);
+
+  window.addEventListener('resize', function () {
+    if (activeProject) positionTooltip(activeProject);
   });
 })();
 </script>
